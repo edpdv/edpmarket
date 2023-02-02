@@ -41,6 +41,7 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'devise'
 gem 'materialize-sass'
 gem 'jquery-rails'
 gem 'sass-rails'
