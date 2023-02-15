@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @content %>
+
+<div>
+		<%= link_to "Modifica contenuto", edit_content_path(@content), class:"waves-effect waves-light blue darken-4 btn" %> 
+	<br>
+	<br>
+		<%= link_to "Torna alla lista contenuti", contents_path, class:"waves-effect waves-light blue darken-4 btn" %>
+	<br>
+	<br>
+		<%= button_to "Elimina contenuto", @content, method: :delete, class:"waves-effect waves-light blue darken-4 btn" %>
+</div>

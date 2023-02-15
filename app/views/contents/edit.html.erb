@@ -1,0 +1,10 @@
+<h1>Modifica contenuto</h1>
+
+<%= render "form", content: @content %>
+
+<br>
+
+<div>
+  <td><%= link_to "Mostra questo contenuto", @content, class:"waves-effect waves-light blue darken-4 btn" %></td> 
+  <%= link_to "Torna alla lista contenuti", contents_path, class:"waves-effect waves-light blue darken-4 btn" %>
+</div>
