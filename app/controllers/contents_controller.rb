@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :set_content, only: %i[ show edit update destroy ]
+  before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
     @contents = Content.all
@@ -9,20 +9,20 @@ class ContentsController < ApplicationController
   end
 
   def new
-    @content = Content.new
+    @content = current_user.contents.build
   end
 
   def edit
   end
 
   def create
-    @content = Content.new(content_params)
+    @content = current_user.contents.build(content_params)
 
     respond_to do |format|
       if @content.save
         format.html { redirect_to content_url(@content), notice: "Content was successfully created." }     
       else
-        format.html { render :new, status: :unprocessable_entity }  
+        format.html { render :new }  
       end
     end
   end
@@ -32,7 +32,7 @@ class ContentsController < ApplicationController
       if @content.update(content_params)
         format.html { redirect_to content_url(@content), notice: "Content was successfully updated." }
       else
-        format.html { render :edit, status: :unprocessable_entity }   
+        format.html { render :edit }   
       end
     end
   end
