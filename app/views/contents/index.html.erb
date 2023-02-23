@@ -21,8 +21,10 @@
 				<td><%= content.user.name %></td>
 				<td><%= content.price %></td>
 				<td><%= link_to "Mostra", content %></td>
-				<td><%= link_to "Modifica", edit_content_path(content) %></td>
-				<td><%= link_to "Elimina", content, method: :delete, data: {confirm: 'Sei sicuro di voler cancellare il contenuto?'} %></td>
+				<% if content.user == current_user %>
+					<td><%= link_to "Modifica", edit_content_path(content) %></td>
+					<td><%= link_to "Elimina", content, method: :delete, data: {confirm: 'Sei sicuro di voler cancellare il contenuto?'} %></td>
+				<% end %>
 			</tr>
 		<% end %>
 	</tbody>

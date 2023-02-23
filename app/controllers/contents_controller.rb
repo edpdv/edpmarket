@@ -1,5 +1,8 @@
 class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :check_user, only: [:edit, :update, :destroy]
+
 
   def index
     @contents = Content.all
@@ -53,5 +56,11 @@ class ContentsController < ApplicationController
 
     def content_params
       params.require(:content).permit(:titolo, :descrizione, :price)
+    end
+
+    def check_user
+      if current_user != @content.user
+        redirect_to root_url, alert: "Scusa ma non hai accesso a questa pagina"
+      end
     end
 end
