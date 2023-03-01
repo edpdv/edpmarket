@@ -42,7 +42,6 @@ group :test do
 end
 
 gem 'devise'
-gem "paperclip", "~> 6.0.0"
 gem 'materialize-sass'
 gem 'jquery-rails'
 gem 'sass-rails'
