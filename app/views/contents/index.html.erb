@@ -5,6 +5,7 @@
 <table>
 	<thead>
 		<tr>
+			<th>Immagine</th>
 			<th>Titolo</th>
 			<th>Descrizione</th>
 			<th>Utente</th>
@@ -16,6 +17,11 @@
 	<tbody>
 		<% @contents.each do |content| %>
 			<tr>
+				<% if content.cover.representation(resize_to_limit: [100, 100]) %>
+				<td><%= image_tag content.cover.representation(resize_to_limit: [100, 100]) %></td>
+				<% else %>
+				<th>Immagine non caricata!</th>
+				<% end %>
 				<td><%= content.titolo %></td>
 				<td><%= content.descrizione %></td>
 				<td><%= content.user.name %></td>
@@ -33,4 +39,6 @@
 <br>
 
 <%= link_to "Nuovo Contenuto", new_content_path, class:"waves-effect waves-light blue darken-4 btn"%>
-      </div>
+
+<br>
+<br>

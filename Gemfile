@@ -41,6 +41,7 @@ group :test do
   gem "webdrivers"
 end
 
+gem "image_processing", ">= 1.2"
 gem 'devise'
 gem 'materialize-sass'
 gem 'jquery-rails'
