@@ -1,44 +1,45 @@
 <p id="contents"><%= notice %></p>
 
-<h1>Lista Contenuti</h1>
+<!-- <h1>Lista Contenuti</h1> -->
 
-<table>
-	<thead>
-		<tr>
-			<th>Immagine</th>
-			<th>Titolo</th>
-			<th>Descrizione</th>
-			<th>Utente</th>
-			<th>Prezzo</th>
-			<th colspan="3"></th>
-		</tr>
-	</thead>
+<div class="row">
+	<% @contents.each do |content| %>
+		<div class="col s4"> 
+		    <div class="card">
+			    <div class="card-image waves-effect waves-block waves-light">
+			    	<% if content.cover %>
+			    		<%= image_tag content.cover, class: "activator" %>
+			    	<% else %>
+						<th>Immagine non caricata!</th>
+					<% end %>
+			      
+			    </div>
+			    <div class="card-content">
+			      <span class="card-title activator grey-text text-darken-4"><%= content.titolo %></span>
+				    <div>
+					    <span>Venduto da <%= content.user.name %></span>
+					    <span class="right"><%= number_to_currency(content.price) %></span>
+			        </div>
+			        <br>
+	      			<div class="center"><%= link_to "Scopri di più", content, class: "waves-effect waves-light blue darken-4 btn" %></div>
+		    		<% if content.user == current_user %>
+		    			<br>
+			    		<div class="center">
+				      		<p><%= link_to "Edit", edit_content_path(content) %>
+				      		<%= link_to "Elimina", content, method: :delete, data: {confirm: 'Sei sicuro di voler cancellare il contenuto?'} %></p>
+			      		</div>	
+		      		<% end %>		      				  
+			    </div>
 
-	<tbody>
-		<% @contents.each do |content| %>
-			<tr>
-				<% if content.cover.representation(resize_to_limit: [100, 100]) %>
-				<td><%= image_tag content.cover.representation(resize_to_limit: [100, 100]) %></td>
-				<% else %>
-				<th>Immagine non caricata!</th>
-				<% end %>
-				<td><%= content.titolo %></td>
-				<td><%= content.descrizione %></td>
-				<td><%= content.user.name %></td>
-				<td><%= content.price %></td>
-				<td><%= link_to "Mostra", content %></td>
-				<% if content.user == current_user %>
-					<td><%= link_to "Modifica", edit_content_path(content) %></td>
-					<td><%= link_to "Elimina", content, method: :delete, data: {confirm: 'Sei sicuro di voler cancellare il contenuto?'} %></td>
-				<% end %>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
-
+			    <div class="card-reveal">
+			    	<span class="card-title grey-text text-darken-4"><%= content.titolo %><i class="material-icons right">close</i></span>
+			    	<p><%= content.descrizione %></p>
+			    </div>
+		    </div>
+	    </div>
+    <% end %>
+</div>
+            
 <br>
 
-<%= link_to "Nuovo Contenuto", new_content_path, class:"waves-effect waves-light blue darken-4 btn"%>
 
-<br>
-<br>

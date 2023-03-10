@@ -1,18 +1,24 @@
 <div id="<%= dom_id content %>">
-  
-	<% if content.cover %>
-	<%= image_tag content.cover.representation(resize_to_limit: [100, 100]) %>
-    <% end %>
-  <p>
-    <%= content.titolo %>
-  </p>
 
-  <p>  
-    <%= content.descrizione %>
-  </p>
-
-  <p>  
-    <%= content.price %>
-  </p>
+  <div class="row">
+    <div class="col l6">  
+	    <% if content.cover %>
+	      <%= image_tag content.cover %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col l6">
+      <p>
+        <%= content.titolo %>
+      </p>
+      <p>  
+        <%= content.descrizione %>
+      </p>
+      <p>  
+        <%= content.price %>
+      </p>
+    </div>
+  </div>
 
 </div>
