@@ -2,15 +2,19 @@
 
 <%= render @content %>
 
-<div>
-	<% if @content.user == current_user %>
-		<%= link_to "Modifica contenuto", edit_content_path(@content), class:"waves-effect waves-light blue darken-4 btn" %> 
-	<br>
-	<br>
+<div class="row">
+	<div class= "col l4">
+		<% if @content.user == current_user %>
+			<%= link_to "Modifica contenuto", edit_content_path(@content), class:"waves-effect waves-light blue darken-4 btn" %> 
+	</div>
+
+	<div class= "col l4">
 		<%= button_to "Elimina contenuto", @content, method: :delete, class:"waves-effect waves-light blue darken-4 btn" %>
-	<% end %>
-	
-	<br>
-		<%= link_to "Torna alla lista contenuti", contents_path, class:"waves-effect waves-light blue darken-4 btn" %>
+		<% end %>
+	</div>
+
+	<div class= "col l4">
+		<%= link_to "Torna alla lista", contents_path, class:"waves-effect waves-light blue darken-4 btn" %>
+	</div>
 	
 </div>
