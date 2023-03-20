@@ -4,7 +4,7 @@
 
 <div class="row">
 	<% @contents.each do |content| %>
-		<div class="col s4"> 
+		<div class="col s3"> 
 		    <div class="card">
 			    <div class="card-image waves-effect waves-block waves-light">
 			    	<% if content.cover %>
@@ -41,5 +41,9 @@
 </div>
             
 <br>
+<div class="center">
 
+<%= will_paginate @content %>
 
+</div>
+<br>
