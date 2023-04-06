@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col l6">  
-	    <% if content.cover %>
+	    <% if content.cover.representation(resize_to_limit: [300, 300]) %>
 	      <%= image_tag content.cover.representation(resize_to_limit: [300, 300]), class: "show-img" %>
       <% end %>
     </div>
