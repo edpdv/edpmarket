@@ -1,5 +1,10 @@
 class Content < ApplicationRecord
+
+	extend FriendlyId
+	friendly_id :titolo, use: :slugged
+
 	belongs_to :user
+	has_many :sales
 
 	has_one_attached :cover
 	has_one_attached :contenuto

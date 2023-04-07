@@ -49,3 +49,5 @@ gem 'sass-rails'
 gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
 gem 'activestorage-validator'
+gem 'friendly_id', '~> 5.4.0'
+gem 'dotenv-rails', groups: [:development, :test]
