@@ -14,9 +14,16 @@
   </head>
 
   <body> 
-    <%= render "layouts/header" %>   
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <%= render "layouts/header" %> 
+
+      <div class="container">
+      <% flash.each do |type, message| %>
+      <script>
+        M.toast({html: '<% message %>', classes: 'rounded'});
+      </script>
+      <% end %>
+      </div>
+
   <main class="container">
       <%= yield %>
   </main>
